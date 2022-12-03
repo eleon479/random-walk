@@ -11,14 +11,14 @@
 	const rmin = -10;
 	const amount = 1000;
 	const scatter = [{x: xstart, y: ystart}]
-
+	
 	let prev = ystart;
 	for (let x = xstart + 1; x <= amount; x++) {
 		const y = prev + Math.random() * (rmax - rmin) + rmin;
 		scatter.push({x, y})
 		prev = y
 	}
-
+	
 	const ctx = document.getElementById('myChart');
 	new Chart(ctx, {
 		type: 'scatter',
@@ -48,5 +48,4 @@
 	});
 </script>
 </body>
-
 </html>
