@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<div>
+	<canvas id="myChart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+	const xstart = 0;
+	const ystart = 0;
+	const rmax = 10;
+	const rmin = -10;
+	const amount = 1000;
+	const scatter = [{x: xstart, y: ystart}]
+
+	let prev = ystart;
+	for (let x = xstart + 1; x <= amount; x++) {
+		const y = prev + Math.random() * (rmax - rmin) + rmin;
+		scatter.push({x, y})
+		prev = y
+	}
+
+	const ctx = document.getElementById('myChart');
+	new Chart(ctx, {
+		type: 'scatter',
+		data: {
+			datasets: [{
+				label: '',
+				data: scatter,
+				borderWidth: 1,
+				showLine: true,
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+					}
+				}],
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						stepSize: 5
+					}
+				}]
+			}
+		}
+	});
+</script>
+</body>
+
+</html>
